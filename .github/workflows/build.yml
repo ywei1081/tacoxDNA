@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches:
+        - master
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: install-dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install pyinstaller
+        pip install -r requirements.txt
+    - name: build-bundle
+      run: |
+        PYTHONPATH=src pyinstaller src/cadnano_oxDNA.py --onefile
+    - uses: actions/upload-artifact@v3
+      with:
+        name: cadnano_oxDNA-linux
+        path: dist/cadnano_oxDNA
