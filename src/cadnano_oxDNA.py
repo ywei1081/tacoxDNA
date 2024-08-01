@@ -654,7 +654,7 @@ if __name__ == '__main__':
         print("USAGE:", file=sys.stderr)
         print("\t%s cadnano_file lattice_type" % sys.argv[0], file=sys.stderr)
         print("\t[-q\--sequence FILE] [-b\--box VALUE] [-e\--seed VALUE] [-p\--print-virt2nuc] [-o\--print-oxview]", file=sys.stderr)
-        exit(1)
+        sys.exit(1)
         
     if len(sys.argv) < 3:
         print_usage()
@@ -676,7 +676,7 @@ if __name__ == '__main__':
         origami_he = True
     else:
         print("Lattice_type should be either 'sq' or 'he'", file=sys.stderr)
-        exit(1)
+        sys.exit(1)
     
     try:
         import getopt
@@ -1054,7 +1054,7 @@ if __name__ == '__main__':
         
     if rev_sys.N == 0:
         base.Logger.log("The generated configuration is empty: this might be due to this conversion module not supporting virtual helices containing no scaffold strands.", base.Logger.CRITICAL)
-        exit(1)
+        sys.exit(1)
 
     if print_virt2nuc:
         with open("virt2nuc", "wb") as fout:
