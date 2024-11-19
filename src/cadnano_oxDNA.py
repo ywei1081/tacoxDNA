@@ -846,7 +846,7 @@ if __name__ == '__main__':
             
         if slice_sys.N_strands == 0:
             base.Logger.log("No scaffold strand found in virtual helix n. %d: staples-only virtual helices are not supported" % h.num, base.Logger.WARNING)
-            continue
+            # continue
 
         # read the staple squares and add strands to slice_sys
         i = 0
