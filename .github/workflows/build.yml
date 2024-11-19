@@ -6,8 +6,8 @@ on:
         - master
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
+  build-windows:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -21,8 +21,8 @@ jobs:
         pip install -r requirements.txt
     - name: build-bundle
       run: |
-        PYTHONPATH=src pyinstaller src/cadnano_oxDNA.py --onefile
+        pyinstaller src/cadnano_oxDNA.py --onefile --paths src/
     - uses: actions/upload-artifact@v3
       with:
-        name: cadnano_oxDNA-linux
-        path: dist/cadnano_oxDNA
+        name: cadnano_oxDNA-win
+        path: dist/cadnano_oxDNA.exe
